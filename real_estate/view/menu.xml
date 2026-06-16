@@ -1,0 +1,13 @@
+<odoo>
+        <menuitem id="test_menu_root" name="Test">
+        <menuitem id="test_first_level_menu1" name="First Level1">
+            <menuitem id="test_model_menu_action" action="test_model_action"/>
+
+        </menuitem>
+            <menuitem id="test_first_level_menu11" name="settings">
+                <menuitem id="test_model_1" action="property_type_action1"/>
+                <menuitem id="property_tags" action="property_tags_action"/>
+            </menuitem>
+
+    </menuitem>
+</odoo>

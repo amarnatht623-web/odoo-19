@@ -1,0 +1,1 @@
+from . import properties,property_type,property_tags,property_offers

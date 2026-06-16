@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <menuitem id="menu_sale_custom_orders"
+                  name="mapping"
+                  parent="sale.menu_sales_config"
+                  action="country_price_list_id1"/>
+    </data>
+</odoo>

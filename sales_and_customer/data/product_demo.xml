@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="new_product_2" model="product.product">
+        <field name="name">Second Product</field>
+    </record>
+<!--    <record id="genres_nonfiction" model="genres">-->
+<!--        <field name="name">Non fiction</field>-->
+<!--    </record>-->
+<!--    <record id="genres_thriller" model="genres">-->
+<!--        <field name="name">Thriller</field>-->
+<!--    </record>-->
+<!--    <record id="genres_novel" model="genres">-->
+<!--        <field name="name">Novel</field>-->
+<!--    </record>-->
+
+
+</odoo>

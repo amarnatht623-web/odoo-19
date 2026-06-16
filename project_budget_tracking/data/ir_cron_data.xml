@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <record id="ir_cron_project_exceed_mails" model="ir.cron">
+        <field name="name">project </field>
+        <field name="model_id" ref="project_budget_tracking.model_project_project"/>
+        <field name="state">code</field>
+        <field name="code">model.send_project_mail()</field>
+        <field name="active" eval="True"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        </record>
+    </data>
+</odoo>
