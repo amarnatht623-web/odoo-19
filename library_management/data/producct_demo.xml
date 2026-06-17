@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="consu_penalty_011" model="product.product">
+        <field name="name">Penalty</field>
+        <field name="type">service</field>
+    </record>
+</odoo>

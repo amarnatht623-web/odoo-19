@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_partner_form" model="ir.ui.view">
+         <field name="name">res.partner.form.inherit.partner.vehicle.contracts</field>
+           <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//div[@name='button_box']" position="inside">
+                   <button name="action_view_checkout_history"
+                           type="object"
+                           class="oe_stat_button"
+                           icon="oi-view">
+                           <field name="checkout_count" widget="statinfo" string="checkout count"/>
+                   </button>
+                   <button name="action_view_due_date_history"
+                           type="object"
+                           class="oe_stat_button"
+                           icon="oi-view-list">
+                           <field name="late_return" widget="statinfo" string="late return count"/>
+                   </button>
+                   <button name="action_view_penalty"
+                           type="object"
+                           class="oe_stat_button"
+                           icon="fa-pencil-square-o">
+                           <field name="currency_id" invisible="1"/>
+                           <field name="company_id" invisible="1"/>
+                           <field name="penalty" widget="statinfo" string="total amount"/>
+                   </button>
+
+               </xpath>
+               <xpath expr="//field[@name='category_id']" position="after">
+                   <field name="book_max"/>
+<!--                   <field name="return_dates"/>-->
+<!--                   <field name="late_return"/>-->
+               </xpath>
+           </field>
+        </record>
+</odoo>

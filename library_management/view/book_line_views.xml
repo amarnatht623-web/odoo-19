@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="checkout_model_action4" model="ir.actions.act_window">
+        <field name="name">book.line</field>
+        <field name="res_model">book.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="book_line_id" model="ir.ui.view">
+        <field name="name">book.line</field>
+        <field name="model">book.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="books_id" required="True"/>
+                <field name="checkout"/>
+                <field name="books_author"/>
+                <field name="issued_book_date"/>
+                <field name="return_book_date"/>
+                <field name="is_return_late"/>
+
+            </list>
+        </field>
+    </record>
+</odoo>

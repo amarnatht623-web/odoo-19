@@ -1,0 +1,90 @@
+<odoo>
+    <record id="books_model_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">books</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+     <record id="books_model_action1" model="ir.ui.view">
+        <field name="name">books</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+                         <list string="Books">
+                             <field name="books_name"/>
+                             <field name="book_id"/>
+                             <field name="book_status"
+                                 decoration-success ="book_status == 'Available'"
+                                 decoration-danger="book_status == 'Unavailable'"
+                                 decoration-warning="book_status == 'Comming soon'"/>
+                         </list>
+        </field>
+    </record>
+    <record id="books_model_action2" model="ir.ui.view">
+        <field name="name">books</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <form string="books">
+                <sheet>
+                    <group>
+                    <h1>
+                        <group>
+                            <field name="books_name" placeholder="Eg.Book name" colspan="8" style="width: 100%"/>
+                        </group>
+                    </h1>
+                        <group>
+                            <field name="image" widget="image" options="{'size':[100,100]}" filename="attachment_filename" class="oe_avatar" lass="file" data-show-preview="true"/>
+                            <field name="attachment_filename" invisible="1"/>
+
+                        </group>
+                    </group>
+                        <notebook>
+                            <page string="General information">
+                                <group>
+                                    <field name="book_id"/>
+                                    <field name="book_isbn"/>
+                                    <field name="sales_price"/>
+                                    <field name="cost_price"/>
+                                    <field name="book_status"/>
+                                </group>
+                            </page>
+                            <page string="others">
+                                <group>
+                                    <field name="book_genre_ids" widget="many2many_tags"/>
+                                    <field name="book_authors_id"/>
+                                    <field name="book_publishers_id"/>
+                                </group>
+                            </page>
+                            <page string="description">
+                                    <field name="book_description"/>
+                            </page>
+                        </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="books_model_action3" model="ir.ui.view">
+        <field name="name">books</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="books_name"/>
+                <field name="book_authors_id"/>
+                <field name="book_genre_ids"/>
+                <field name="book_isbn"/>
+                 <group name="groupby">
+                   <filter name="book_authors_id" string="Authors"
+                           context="{'group_by': 'book_authors_id'}"/>
+                   <filter name="book_genre_ids" string="Genres"
+                           context="{'group_by': 'book_genre_ids'}"/>
+                   <filter name="books_name" string="Title"
+                           context="{'group_by': 'books_name'}"/>
+                   <filter name="book_publishers_id" string="Publisher"
+                           context="{'group_by': 'book_publishers_id'}"/>
+               </group>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

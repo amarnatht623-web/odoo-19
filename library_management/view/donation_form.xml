@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="donation_form_customer" name="Customer Form">
+            <t t-call="website.layout">
+                <section class="d-flex align-items-center justify-content-center vh-100" style="background-color: #f8f9fa;">
+                    <div class="card shadow-lg rounded-4" style="width: 400px;">
+                        <div class="card-body p-5">
+                            <h3 class="text-center mb-4">Donation Form</h3>
+                            <form action="/website/donation/create" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Book name</label>
+                                    <input type="text" name="books_name" class="form-control rounded-2"  required="True"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Book Description</label>
+                                    <input type="text" name="book_description" class="form-control rounded-2"  required="True"/>
+                                </div>
+                               <div class="mb-3">
+                                    <label class="form-label fw-semibold">Book author</label>
+                                    <select name="author_name" class="form-control rounded-2">
+                                        <t t-foreach="author_name" t-as="author">
+                                            <option t-esc="author.name" t-att-value="author.id"  required="True"/>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Book status</label>
+                                    <select name="book_status" class="form-control rounded-2">
+                                        <option value="Comming soon">Comming soon</option>
+                                    </select>
+                                </div>
+                               <div class="form-group">
+                               <label for="attachment">File</label>
+                                   <input type="file" accept="image/*" name="book_image_att" class="logo_selection_input" multiple="multiple"/>
+                                </div>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-block rounded-3 py-2">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+        <template id="donation_success_template" name="Donation Created">
+            <t t-call="website.layout">
+                <section class="d-flex align-items-center justify-content-center vh-100" style="background-color: #f8f9fa;">
+                    <div class="text-center">
+                        <h3 class="text-success mb-3">Thank You!</h3>
+                        <a href="/website/donation/form" class="btn btn-primary rounded-3">Add Another BOOK</a>
+                    </div>
+                </section>
+            </t>
+        </template>
+
+         <record id="menu_donation_form" model="website.menu">
+            <field name="name">Create Donation</field>
+            <field name="url">/website/donation/form</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">100</field>
+        </record>
+    </data>
+</odoo>

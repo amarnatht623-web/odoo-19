@@ -1,0 +1,21 @@
+<odoo>
+   <record id="view_book_checkout_wizard_form" model="ir.ui.view">
+       <field name="name">book.checkout.wizard.form</field>
+       <field name="model">book.checkout.wizard</field>
+       <field name="arch" type="xml">
+           <form string="recommendations">
+                   <field name="recommend_ids"/>
+           <footer>
+               <button string="Confirm Orders"
+                       name="Confirm_orders"
+                       type="object"
+                       class="btn-primary"/>
+               <button string="Cancel"
+                       class="btn-secondary"
+                       special="cancel"/>
+           </footer>
+           </form>
+       </field>
+   </record>
+
+</odoo>

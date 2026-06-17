@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="form_book_borrow_report">
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                            <div class="text-right">
+                                <t t-if="len_name == 1">
+                                   <p><strong>Member Name:</strong> <span t-out="names[0]"/></p>
+                                </t>
+                                <t t-if="len_books == 1">
+                                    <p><strong>Book Name:</strong> <span t-out="books[0]"/></p>
+                                </t>
+                                <t t-if="len_genres == 1">
+                                    <p><strong>Book Name:</strong> <span t-out="genres[0]"/></p>
+                                </t>
+
+                            </div>
+                            <div class="text-center">
+                            <h1>Library management</h1>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Reference id</th>
+                                        <t t-if="len_name != 1">
+                                            <th>Member name</th>
+                                        </t>
+                                        <t t-if="len_books != 1">
+                                            <th>books name</th>
+                                        </t>
+                                         <t t-if="len_genres != 1">
+                                            <th>genres name</th>
+                                         </t>
+                                        <th>Author</th>
+                                        <th>Checkout date</th>
+                                        <th>Return date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="data" t-as="doc">
+                                        <td>
+                                            <span t-esc = "doc['reference_id']" />
+                                        </td>
+                                        <t t-if="len_name != 1">
+                                            <td>
+                                                <span t-esc = "doc['member_name']"/>
+                                            </td>
+                                        </t>
+                                        <t t-if="len_books != 1">
+                                            <td>
+                                               <span t-out = "doc['book_name']"/>
+                                            </td>
+                                        </t>
+                                         <t t-if="len_genres != 1">
+                                            <td>
+                                                <span t-out = "doc['genres_name']"/>
+                                            </td>
+                                         </t>
+                                        <td>
+                                            <span t-out = "doc['auther_name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-out = "doc['issued_date']"/>
+                                        </td>
+                                        <td>
+                                            <span t-out = "doc['return_date']"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+        </t>
+    </template>
+</odoo>
+

@@ -1,0 +1,86 @@
+<odoo>
+    <record id="checkout_model_action" model="ir.actions.act_window">
+        <field name="name">checkout</field>
+        <field name="res_model">checkout</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="checkout_model_action1" model="ir.ui.view">
+        <field name="name">checkout</field>
+        <field name="model">checkout</field>
+        <field name="arch" type="xml">
+
+            <list string="checkout">
+                <field name="reference_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="checkout_model_action2" model="ir.ui.view">
+        <field name="name">checkout</field>
+        <field name="model">checkout</field>
+        <field name="arch" type="xml">
+            <form string="checkout">
+                <header>
+                    <button name="book_confirm" string="confirm" class="btn-primary" type="object" invisible="status != 'Draft'"/>
+                    <button name="book_return" string="Return"  type="object" invisible="status not in ('Checked out')"/>
+                    <button name="book_cancel" string="Cancel" type="object"/>
+                    <button name="create_invoice" string="Create invoice" class="btn-primary" type="object" invisible="status not in ('Returned')"/>
+
+                    <field name="status" widget="statusbar" options="{'clickable':'1'}"
+                               statusbar_visible="Draft,Checked out,Returned,Overdue,Cancel"/>
+                </header>
+                <div class="alert alert-warning oe_edit_only" role="alert" invisible ="partner_late_count != maximum_late_returns">
+                  Member reached their maximum return limit (<field name="partner_late_count"/>)
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_invoice_history"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="oi-view">
+                    <field name="invoice_count" widget="statinfo" string="book order"/>
+                    </button>
+                </div>
+                    <h1>
+                    <field name="reference_id"/>
+                    </h1>
+                    <group>
+                        <field name="partner_id" readonly="status in ['Checked out','Returned','Overdue','Cancel']"/>
+                        <field name="phone_no"/>
+                        <field name="invoice_id" context="{'order_id': id}"/>
+                        <field name="maximum_late_returns"/>
+                        <field name="partner_late_count"/>
+<!--                        <field name="diff_book"/>-->
+<!--                        <field name="late_returns"/>-->
+<!--                        <field name="is_late_return"/>-->
+
+                    </group>
+                    <notebook>
+                        <page string="books lines" >
+                                <field name="book_name_ids" readonly="status in ['Checked out','Returned','Overdue','Cancel']" >
+                                    <list editable="bottom">
+                                       <field name="books_id"/>
+                                        <field name="books_author"/>
+                                        <field name="books_genres"/>
+                                        <field name="sales_price" width="100px"/>
+                                        <field name="cost_price"/>
+                                    </list>
+                                </field>
+                            </page>
+                        <page string="others">
+                            <group>
+                                <field name="issued_date"/>
+                                <field name="days_reminder"/>
+                                <field name="due_date"/>
+                                <field name="return_date"/>
+                                <field name="penalty"/>
+                            </group>
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

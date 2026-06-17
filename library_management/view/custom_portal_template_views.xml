@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <template id="portal_my_home_donations"
+              inherit_id="portal.portal_my_home">
+        <xpath expr="//div[contains(@class,'o_portal_docs')]"
+               position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">My Donations</t>
+                <t t-set="url" t-value="'/my/donations'"/>
+                <t t-set="text">
+                    Follow all donated books
+                </t>
+                <t t-set="placeholder_count"
+                   t-value="'donation_count'"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_donations"
+              name="My Donations">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <h2 class="mb-4">
+                    My Contributions
+                </h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Book Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="books"
+                           t-as="book">
+                            <tr>
+                                <td>
+                                    <a t-att-href="'/my/donations/%s' % book.id">
+                                        <span t-esc="book.books_name"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+    <template id="portal_donation_detail" name="Donation Detail">
+       <t t-call="portal.portal_layout">
+            <div class="container mt-4">
+                <h2>
+                    <span t-esc="book.books_name"/>
+                </h2>
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Book Name</th>
+                                <th>Author</th>
+                                <th>Book Status</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span t-esc="book.books_name" />
+                                </td>
+                                <td>
+                                    <span t-esc="book.book_authors_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="book.book_status"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+         <record id="action_report_book_borrow_form" model="ir.actions.report">
+                <field name="name">book borrow report</field>
+                <field name="model">book.borrow.report</field>
+                <field name="report_type">qweb-pdf</field>
+                <field name="report_name">library_management.form_book_borrow_report</field>
+                <field name="report_file">libarary_management.form_book_borrow_report</field>
+                <field name="binding_model_id" ref="model_book_borrow_report"/>
+                <field name="binding_type">report</field>
+         </record>
+    </data>
+</odoo>

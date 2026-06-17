@@ -1,0 +1,27 @@
+<odoo>
+    <menuitem id="books_menu_root" name="LIBRARY"/>
+        <menuitem id="checkout_first_level" name="Checkout" action="checkout_model_action" parent="books_menu_root" sequence="1" />
+        <menuitem id="books_first_level" name="Books" action="books_model_action" parent="books_menu_root" sequence="2" />
+        <menuitem id="authors_first_level" name="Authors" action="authors_model_action" parent="books_menu_root" sequence="3" />
+        <menuitem id="publishers_first_level" name="Publishers" action="publishers_model_action" parent="books_menu_root" sequence="4"  />
+        <menuitem id="genres_first_level" name="Genres" action="genres_model_action" parent="books_menu_root" sequence="5"  />
+        <menuitem id="form_attachment_first_level" name="Attachment" action="form_attachment_action" parent="books_menu_root" sequence="6"  />
+
+        <menuitem id="menu_sale_config"
+            name="Configuration"
+            parent="books_menu_root"
+            sequence="7">
+                <menuitem id="menu_sale_general_settings"
+                    name="Settings"
+                    action="action_sale_config_settings"/>
+        </menuitem>
+        <menuitem id="report_first_level"
+                  name="Report"
+                  parent="books_menu_root"
+                  sequence="8">
+                <menuitem id="menu_book_borrow_report"
+                name="report"
+                action="action_book_borrow_report"/>
+        </menuitem>
+
+</odoo>

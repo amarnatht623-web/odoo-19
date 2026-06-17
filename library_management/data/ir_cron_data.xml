@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <record id="ir_cron_over_due_mails" model="ir.cron">
+        <field name="name">Over due</field>
+        <field name="model_id" ref="library_management.model_checkout"/>
+        <field name="state">code</field>
+        <field name="code">model._send_overdue_mail()</field>
+        <field name="active" eval="True"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        </record>
+
+        <record id="ir_cron_reminder_days_mail" model="ir.cron">
+        <field name="name">reminder before the due date</field>
+        <field name="model_id" ref="library_management.model_checkout"/>
+        <field name="state">code</field>
+<!--        <field name="groups" eval="[(6,0, [ref('group_purchase_request_user')])]"/>-->
+        <field name="code">model._reminder_days_mail()</field>
+        <field name="active" eval="True"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        </record>
+    </data>
+</odoo>

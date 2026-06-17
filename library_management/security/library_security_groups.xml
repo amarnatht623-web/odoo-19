@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <data>
+       <record model="res.groups" id="librarian_manager">
+           <field name="name">Librarian</field>
+       </record>
+       <record model="res.groups" id="librarian_assistant">
+           <field name="name">Library Assistant</field>
+       </record>
+       <record id="mail_activity_rule_user" model="ir.rule">
+           <field name="name">Library assistant</field>
+           <field name="model_id" ref="model_checkout"/>
+           <field name="domain_force">[('create_uid', '=', user.id)]</field>
+           <field name="groups" eval="[Command.link(ref('library_management.librarian_assistant'))]"/>
+       </record>
+
+   </data>
+</odoo>

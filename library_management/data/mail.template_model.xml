@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="email_template_name" model="mail.template">
+            <field name="name">EMAIL TEMPLATE NAME</field>
+       <field name="model_id" ref="library_management.model_checkout"/>
+            <field name="subject">Subject {{ object.name }}</field>
+            <field name="email_from">
+                {{ user.email_formatted or user.company_id.email_formatted }}
+            </field>
+            <field name="email_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>
+                        Hello,<t t-out="object.partner_id.name"></t>
+
+                        <br/>
+                        <br/>
+                        Book name :
+<!--                        <t t-out="object.book_name_ids.books_id.books_name"></t>-->
+                        your due date is over.
+                        <t t-out="object.due_date"></t>
+                        <br/>
+                        <br/>
+                        Mitchell Admin
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <record id="email_template_name1" model="mail.template">
+            <field name="name">EMAIL TEMPLATE NAME</field>
+       <field name="model_id" ref="library_management.model_checkout"/>
+            <field name="subject">Subject {{ object.name }}</field>
+            <field name="email_from">
+                {{ user.email_formatted or user.company_id.email_formatted }}
+            </field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>
+                        Hello,<t t-out="object.partner_id.name"/>
+                        <br/>
+                        <br/>
+                        <p>
+                        your return date is<span>
+                        <t t-out="object.due_date"/></span>
+                        </p>
+                        <br/>
+                        <br/>
+                        Mitchell Admin
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+<!--acess_books_libriran,acess.books.librarian,model_books,library_management.librarian_manager,1,1,1,1-->
+<!--acess_authors_libriran,acess.authors.librarian,model_authors,library_management.librarian_manager,1,1,1,1-->
+<!--acess_publisher_libriran,acess.publisher.librarian,model_publishers,library_management.librarian_manager,1,1,1,1-->
