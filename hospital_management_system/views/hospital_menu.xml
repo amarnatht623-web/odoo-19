@@ -1,0 +1,6 @@
+<odoo>
+    <menuitem id="hospital_menu_root" name="Hospital"/>
+        <menuitem id="patient_first_level" name="Patient" action="patient_model_action" parent="hospital_menu_root"/>
+        <menuitem id="appointment_first_level" name="Appointment" action="appointment_model_action" parent="hospital_menu_root"/>
+        <menuitem id="department_first_level" name="Department" action="department_model_action" parent="hospital_menu_root"  />
+</odoo>
